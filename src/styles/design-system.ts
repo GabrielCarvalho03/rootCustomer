@@ -17,6 +17,7 @@ export const DesignSystem: DesingSystem = {
   },
   borderWidht: {
     small: "1px",
+    base: "2px",
   },
 
   typography: {

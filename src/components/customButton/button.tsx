@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-type customInputProps = {
+type customButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: React.ReactNode;
   height: "small" | "base" | "large";
   borderRadius?: "small";
@@ -12,14 +12,16 @@ export const CustomButton = ({
   height,
   children,
   variant,
-}: customInputProps) => {
+}: customButtonProps) => {
   return (
-    <S.CustomButton
-      variant={variant}
-      height={height}
-      borderRadius={borderRadius}
-    >
-      {children}
-    </S.CustomButton>
+    <>
+      <S.CustomButton
+        variant={variant}
+        height={height}
+        borderRadius={borderRadius}
+      >
+        {children}
+      </S.CustomButton>
+    </>
   );
 };

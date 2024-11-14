@@ -1,10 +1,18 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
+      "@assets/*": ["assets/*"],
+      "@api/*": ["api/*"],
+      "@hooks/*": ["hooks/*"],
+      "@app/*": ["app/*"],
+      "@dtos/*": ["dtos/*"],
+      "@repositories/*": ["repositories/*"],
+      "@utils/*": ["utils/*"]
     },
     "jsx": "react-jsx"
   },

@@ -15,6 +15,7 @@ export interface DesingSystem {
   };
   borderWidht: {
     small: string;
+    base: string;
   };
 
   typography: {
