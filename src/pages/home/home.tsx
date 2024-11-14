@@ -7,9 +7,11 @@ import { CustomButton } from "@components/customButton/button";
 import { TextStrong } from "@styles/utils";
 import { ModalCustomer } from "@components/modais/customer/addAndEdit/customer";
 import { useCustomer } from "@hooks/useCustomer/useCustomer";
-import { client } from "@api/db.client";
+import { clientList } from "@api/db.client";
 import { CustomerDto } from "@dtos/customer/CustomerDto";
 import { RemoveCustomerModal } from "@components/modais/customer/removeCustomerModal/removeCustomerModa";
+import { Filter } from "@components/filter/filter";
+import { Pagination } from "@mui/material";
 
 export const Home = () => {
   const { setModalCreateOrEdit, setIsEdit } = useCustomer();
@@ -22,17 +24,17 @@ export const Home = () => {
             <S.Lenght>
               <TextStrong>16</TextStrong> clientes encontrados:
             </S.Lenght>
-            <S.Filter>
-              <S.FilterIcon />
-              <S.FilterText> Filtrar</S.FilterText>
-            </S.Filter>
+
+            <S.WapperFilter>
+              <S.FilterText>Clientes por página:</S.FilterText>
+              <Filter />
+            </S.WapperFilter>
           </S.BoxLenghtAndFilter>
           <S.CardWapper>
-            {client.map((item: CustomerDto) => (
+            {clientList.client.map((item: CustomerDto) => (
               <Card item={item} />
             ))}
           </S.CardWapper>
-
           <div
             onClick={() => {
               setModalCreateOrEdit(true);
@@ -44,6 +46,7 @@ export const Home = () => {
             </CustomButton>
           </div>
         </S.Wapper>
+        <S.CustomPagination count={clientList.totalPages} shape="rounded" />
       </S.Container>
       <ModalCustomer />
       <RemoveCustomerModal />

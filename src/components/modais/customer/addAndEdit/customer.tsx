@@ -106,19 +106,6 @@ export const ModalCustomer = () => {
             )}
           />
 
-          {/* <CustomInput
-            height="base"
-            borderRadius="small"
-            placeholder="Digite o valor da empresa:"
-            transparent
-            borderWidht="base"
-            {...(register("companyValuation"),
-            {
-              value: formatToBRL(""),
-            })}
-            error={errors.companyValuation?.message}
-          /> */}
-
           <Controller
             name="companyValuation"
             control={control}

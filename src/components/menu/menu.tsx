@@ -44,6 +44,7 @@ export const Menu = () => {
         <S.ContentMenu>
           {ListItem.map((item, index) => (
             <S.WapperMenuItem
+              select={index == selectedIndex ? "primary" : "default"}
               onClick={() => handleItemClick(index)}
               key={index}
             >

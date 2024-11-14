@@ -3,7 +3,8 @@ import { Drawer } from "@mui/material";
 import { DesignSystem } from "@styles/design-system";
 
 type styledProps = {
-  menuIsOpen: boolean;
+  menuIsOpen?: boolean;
+  select?: "primary" | "default";
 };
 
 const slideOut = keyframes`
@@ -63,12 +64,15 @@ export const ContentMenu = styled.main`
   align-items: center;
   gap: 2rem;
   background-color: ${DesignSystem.color.white};
-  padding: 2rem;
+  padding: 2rem 0 0 1rem;
 `;
 
-export const WapperMenuItem = styled.div`
+export const WapperMenuItem = styled.div<styledProps>`
   width: 100%;
+  height: 40px;
   display: flex;
+  border-right: ${({ select }) =>
+    select === "primary" ? `2px solid ${DesignSystem.color.primary}` : "none"};
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
@@ -86,7 +90,7 @@ export const TextMenuItem = styled.p`
   color: ${({ color }) =>
     color === "primary"
       ? DesignSystem.color.primary
-      : DesignSystem.color.grayLight[500]};
+      : DesignSystem.color.black};
   font-family: ${DesignSystem.typography.fonts.secondary};
   font-size: ${DesignSystem.typography.size.medium};
   font-weight: ${DesignSystem.typography.weight.regular};

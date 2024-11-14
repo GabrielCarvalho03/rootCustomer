@@ -1,3 +1,4 @@
+import { Pagination } from "@mui/material";
 import { DesignSystem } from "@styles/design-system";
 import styled from "styled-components";
 
@@ -48,21 +49,33 @@ export const Lenght = styled.p`
   color: ${DesignSystem.color.black};
 `;
 
-export const Filter = styled.div`
+export const WapperFilter = styled.div`
   display: flex;
+  align-items: center;
   gap: 10px;
   cursor: pointer;
 `;
 
-export const FilterIcon = styled.div`
-  width: 20px;
-  height: 20px;
-  background-color: ${DesignSystem.color.black};
+export const FilterText = styled.p`
+  width: 100%;
+  font-size: ${DesignSystem.typography.size.medium};
+  font-weight: ${DesignSystem.typography.weight.regular};
+  line-height: ${DesignSystem.typography.lineHeigth.large};
+  color: ${DesignSystem.color.black};
+  white-space: nowrap;
 `;
 
-export const FilterText = styled.p`
-  font-size: ${DesignSystem.typography.size.small};
-  font-weight: ${DesignSystem.typography.weight.bold};
-  line-height: ${DesignSystem.typography.lineHeigth.medium};
-  color: ${DesignSystem.color.black};
+export const CustomPagination = styled(Pagination)`
+  .MuiPaginationItem-root {
+    color: inherit;
+    font-weight: ${DesignSystem.typography.weight.bold};
+  }
+  .MuiPaginationItem-root.Mui-selected {
+    background-color: ${DesignSystem.color.primary};
+    color: ${DesignSystem.color.white} !important;
+  }
+
+  .MuiPaginationItem-icon {
+    display: none;
+  }
 `;
