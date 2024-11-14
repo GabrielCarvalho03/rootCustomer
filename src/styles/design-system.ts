@@ -9,6 +9,7 @@ export const DesignSystem: DesingSystem = {
     grayLight: {
       100: "#AAAAAA",
       200: "#D9D9D900",
+      500: "#363636",
     },
     danger: "#ff0000",
   },

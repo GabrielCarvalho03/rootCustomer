@@ -3,17 +3,19 @@ import * as S from "./styles";
 import LogoIcon from "@assets/icons/logo-icon";
 import { Pointer } from "@styles/utils";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { UseMenu } from "@hooks/useMenu/useMenu";
 
 export const Header = () => {
   const { userName } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const { setMenuIsOpen } = UseMenu();
 
   return (
     <S.HeaderContainer>
       <S.Wapper>
         <S.DrawerSection>
-          <Pointer>
+          <Pointer onClick={() => setMenuIsOpen(true)}>
             <MenuIcon />
           </Pointer>
           <div>
