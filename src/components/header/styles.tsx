@@ -32,6 +32,10 @@ export const MenuSection = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (${DesignSystem.media.mobile}) {
+    display: none;
+  }
 `;
 
 export const ClientInfoSection = styled.div``;

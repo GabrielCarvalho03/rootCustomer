@@ -26,4 +26,10 @@ export interface UseCustomerProps {
   createCustomer: (data: CreateCustomerDto) => Promise<void>;
   updateCustomer: (data: UpdateCustomerDto) => Promise<void>;
   deleteCustomer: (id: string) => Promise<void>;
+
+  selectedCustomers: CustomerDto[];
+  setSelectedCustomers: (value: CustomerDto[]) => void;
+
+  addSelectedCustomer: (customer: CustomerDto) => void;
+  removeSelectedCustomer: (customer: CustomerDto) => void;
 }

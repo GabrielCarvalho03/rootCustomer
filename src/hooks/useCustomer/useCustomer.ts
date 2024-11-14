@@ -17,6 +17,7 @@ export const useCustomer = create<UseCustomerProps>((set) => ({
   setDataCustomer: (value) => set({ dataCustomer: value }),
 
   customers: [],
+
   createCustomer: async (data) => {
     try {
       console.log("foi buscar");
@@ -52,5 +53,21 @@ export const useCustomer = create<UseCustomerProps>((set) => ({
     } catch (error) {
       console.error("Erro ao buscar customers:", error);
     }
+  },
+
+  selectedCustomers: [],
+  setSelectedCustomers: (value) => set({ selectedCustomers: value }),
+
+  addSelectedCustomer: (customer) =>
+    set((state) => ({
+      selectedCustomers: [...state.selectedCustomers, customer],
+    })),
+
+  removeSelectedCustomer: (customer) => {
+    set((state) => ({
+      selectedCustomers: state.selectedCustomers.filter(
+        (item) => item.id !== customer.id
+      ),
+    }));
   },
 }));

@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import AddIcon from "@assets/icons/add-icon";
 import EditIcon from "@assets/icons/edit-icon";
+import RemoveClientIcon from "@assets/icons/remove-client-Icon";
 import TrashIcon from "@assets/icons/trash-icon";
 import { CustomerDto } from "@dtos/customer/CustomerDto";
 import { useCustomer } from "@hooks/useCustomer/useCustomer";
@@ -9,11 +10,18 @@ import { formatNumberInBRL } from "@utils/format-number-in-BRL";
 type CardStyleProps = {
   fontWeight?: "bold" | "normal";
   item: CustomerDto;
+  isClientSelect?: boolean;
 };
 
-export const Card = ({ fontWeight, item }: CardStyleProps) => {
-  const { setModalCreateOrEdit, setModalRemove, setIsEdit, setDataCustomer } =
-    useCustomer();
+export const Card = ({ fontWeight, item, isClientSelect }: CardStyleProps) => {
+  const {
+    setModalCreateOrEdit,
+    setModalRemove,
+    setIsEdit,
+    setDataCustomer,
+    addSelectedCustomer,
+    removeSelectedCustomer,
+  } = useCustomer();
   return (
     <S.CardContainer>
       <S.Text fontWeight={"bold"}>{item.name}</S.Text>
@@ -24,30 +32,42 @@ export const Card = ({ fontWeight, item }: CardStyleProps) => {
         Empresa: {formatNumberInBRL(item.companyValuation)}
       </S.Text>
 
-      <S.WapperActions>
-        <S.pointer>
-          <AddIcon />
-        </S.pointer>
+      {!isClientSelect && (
+        <S.WapperActions>
+          <S.pointer onClick={() => addSelectedCustomer(item)}>
+            <AddIcon />
+          </S.pointer>
 
-        <S.pointer
-          onClick={() => {
-            setModalCreateOrEdit(true);
-            setIsEdit(true);
-            setDataCustomer(item);
-          }}
-        >
-          <EditIcon />
-        </S.pointer>
+          <S.pointer
+            onClick={() => {
+              setModalCreateOrEdit(true);
+              setIsEdit(true);
+              setDataCustomer(item);
+            }}
+          >
+            <EditIcon />
+          </S.pointer>
 
-        <S.pointer
-          onClick={() => {
-            setModalRemove(true);
-            setDataCustomer(item);
-          }}
-        >
-          <TrashIcon />
-        </S.pointer>
-      </S.WapperActions>
+          <S.pointer
+            onClick={() => {
+              setModalRemove(true);
+              setDataCustomer(item);
+            }}
+          >
+            <TrashIcon />
+          </S.pointer>
+        </S.WapperActions>
+      )}
+
+      {isClientSelect && (
+        <S.WapperActions>
+          <S.WapperRemoveClientIcon>
+            <S.pointer onClick={() => removeSelectedCustomer(item)}>
+              <RemoveClientIcon />
+            </S.pointer>
+          </S.WapperRemoveClientIcon>
+        </S.WapperActions>
+      )}
     </S.CardContainer>
   );
 };

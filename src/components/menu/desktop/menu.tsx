@@ -1,10 +1,7 @@
 import LogoIcon from "@assets/icons/logo-icon";
 import * as S from "./styles";
-import HomeIcon from "@assets/icons/home-icon";
 import { ListItem } from "./listItem";
-import { Pointer } from "@styles/utils";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { UseMenu } from "@hooks/useMenu/useMenu";
 import IconCloseMenu from "@assets/icons/icon-close-menu";
 

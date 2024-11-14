@@ -30,12 +30,14 @@ export const Home = () => {
               <Filter />
             </S.WapperFilter>
           </S.BoxLenghtAndFilter>
+
           <S.CardWapper>
             {clientList.client.map((item: CustomerDto) => (
               <Card item={item} />
             ))}
           </S.CardWapper>
-          <div
+
+          <S.WapperButton
             onClick={() => {
               setModalCreateOrEdit(true);
               setIsEdit(false);
@@ -44,7 +46,7 @@ export const Home = () => {
             <CustomButton height="base" variant="outlined" borderRadius="small">
               <S.TitleButton> Criar cliente</S.TitleButton>
             </CustomButton>
-          </div>
+          </S.WapperButton>
         </S.Wapper>
         <S.CustomPagination count={clientList.totalPages} shape="rounded" />
       </S.Container>

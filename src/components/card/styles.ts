@@ -38,3 +38,9 @@ export const WapperActions = styled.div`
 export const pointer = styled.div`
   cursor: pointer;
 `;
+
+export const WapperRemoveClientIcon = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
