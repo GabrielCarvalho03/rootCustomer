@@ -1,11 +1,11 @@
 import LogoIcon from "@assets/icons/logo-icon";
-import * as S from "./styles";
-import { ListItem } from "./listItem";
+import * as S from "../styles";
+import { ListItem } from "../listItem";
 import { useEffect } from "react";
 import { UseMenu } from "@hooks/useMenu/useMenu";
 import IconCloseMenu from "@assets/icons/icon-close-menu";
 
-export const Menu = () => {
+export const MenuDesktop = () => {
   const {
     menuIsOpen,
     selectedIndex,
