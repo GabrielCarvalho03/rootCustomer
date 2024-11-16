@@ -2,6 +2,9 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "baseUrl": "./src",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "paths": {
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
@@ -14,7 +17,10 @@
       "@repositories/*": ["repositories/*"],
       "@utils/*": ["utils/*"]
     },
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "lib": ["esnext", "dom"],
+    "types": ["vitest/globals"]
   },
+
   "include": ["src"]
 }

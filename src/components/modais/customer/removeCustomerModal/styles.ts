@@ -13,6 +13,15 @@ export const ModalContent = styled.form`
   flex-direction: column;
   gap: 15px;
 `;
+export const WapperButton = styled.div`
+  @media (${DesignSystem.media.mobile}) {
+    width: 90%;
+    display: flex;
+    padding-left: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 export const Title = styled.span`
   font-size: ${DesignSystem.typography.size.base};

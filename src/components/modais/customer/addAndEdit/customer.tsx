@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CustomerSchema } from "@hooks/useCustomer/schema";
 import CloseIcon from "@assets/icons/close-icon";
 import { formatToBRL } from "@utils/format-number-input-in-BRL";
+import { Loader } from "@components/Loader/loader";
 
 export const ModalCustomer = () => {
   const {
@@ -22,6 +23,7 @@ export const ModalCustomer = () => {
     createCustomer,
     updateCustomer,
     setIsEdit,
+    isLoadingButton,
   } = useCustomer();
   const {
     register,
@@ -34,11 +36,11 @@ export const ModalCustomer = () => {
     reValidateMode: "onChange",
     resolver: zodResolver(CustomerSchema),
   });
-  const teste = async (data) => {
-    if (isEdit) {
+  const handleAddOrEdit = async (data) => {
+    if (!isEdit) {
       await createCustomer(data);
     } else {
-      await updateCustomer(data);
+      await updateCustomer(data, dataCustomer.id);
     }
   };
 
@@ -75,7 +77,7 @@ export const ModalCustomer = () => {
             <CloseIcon />
           </Pointer>
         </S.ModalHeader>
-        <S.ModalContent onSubmit={handleSubmit(teste)}>
+        <S.ModalContent onSubmit={handleSubmit(handleAddOrEdit)}>
           <CustomInput
             {...register("name")}
             height="base"
@@ -132,7 +134,13 @@ export const ModalCustomer = () => {
             borderRadius="small"
             type="submit"
           >
-            {isEdit ? "Salvar alterações" : "Criar cliente"}
+            {isLoadingButton ? (
+              <Loader />
+            ) : isEdit && !isLoadingButton ? (
+              "Salvar alterações"
+            ) : (
+              "Criar cliente"
+            )}
           </CustomButton>
         </S.ModalContent>
       </Modal>

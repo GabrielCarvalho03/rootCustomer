@@ -1,6 +1,7 @@
 import { CreateCustomerDto } from "@dtos/customer/craeateCustomerDto";
 import { CustomerDto } from "@dtos/customer/CustomerDto";
 import { UpdateCustomerDto } from "@dtos/customer/updateCustomerDto";
+import { CustomerProps } from "@repositories/Customer/ICustomerRepository";
 
 export type DataCustomer = {
   name: string;
@@ -8,9 +9,20 @@ export type DataCustomer = {
   companyValuation: number;
 };
 
+export type listCustomerProps = {
+  page?: number;
+  limit?: number;
+};
+
 export interface UseCustomerProps {
   isEdit: Boolean;
   setIsEdit: (value: Boolean) => void;
+
+  isLoading: Boolean;
+  setIsLoading: (value: Boolean) => void;
+
+  isLoadingButton: Boolean;
+  setIsLoadingButton: (value: Boolean) => void;
 
   modalCreateOrEdit: Boolean;
   setModalCreateOrEdit: (value: Boolean) => void;
@@ -21,11 +33,13 @@ export interface UseCustomerProps {
   dataCustomer: CustomerDto;
   setDataCustomer: (value: CustomerDto) => void;
 
-  customers: CustomerDto[];
-  listAllCustomer: () => Promise<void>;
+  customers: CustomerProps;
+  setCustomers: (value: CustomerProps) => void;
+
+  listAllCustomer: (data: listCustomerProps) => Promise<void>;
   createCustomer: (data: CreateCustomerDto) => Promise<void>;
-  updateCustomer: (data: UpdateCustomerDto) => Promise<void>;
-  deleteCustomer: (id: string) => Promise<void>;
+  updateCustomer: (data: UpdateCustomerDto, id: number) => Promise<void>;
+  deleteCustomer: (id: number) => Promise<void>;
 
   selectedCustomers: CustomerDto[];
   setSelectedCustomers: (value: CustomerDto[]) => void;

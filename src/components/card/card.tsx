@@ -13,7 +13,11 @@ type CardStyleProps = {
   isClientSelect?: boolean;
 };
 
-export const Card = ({ fontWeight, item, isClientSelect }: CardStyleProps) => {
+export const Card = ({
+  fontWeight,
+  item,
+  isClientSelect = false,
+}: CardStyleProps) => {
   const {
     setModalCreateOrEdit,
     setModalRemove,

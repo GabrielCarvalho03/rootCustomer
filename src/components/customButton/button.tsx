@@ -5,6 +5,7 @@ type customButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   height: "small" | "base" | "large";
   borderRadius?: "small";
   variant: "filled" | "outlined";
+  type?: "button" | "submit";
 };
 
 export const CustomButton = ({
@@ -12,10 +13,12 @@ export const CustomButton = ({
   height,
   children,
   variant,
+  type = "button",
 }: customButtonProps) => {
   return (
     <>
       <S.CustomButton
+        type={type}
         variant={variant}
         height={height}
         borderRadius={borderRadius}

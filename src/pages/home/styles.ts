@@ -12,6 +12,21 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+export const WapperLoading = styled.section`
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 export const Wapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +46,6 @@ export const CardWapper = styled.div`
   justify-content: center;
   align-items: center;
   grid-gap: 30px;
-  grid-auto-flow: dense;
 
   @media (${DesignSystem.media.desktop}) {
     grid-template-columns: repeat(3, 1fr);
