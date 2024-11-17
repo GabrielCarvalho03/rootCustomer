@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  login:
+    build:
+      context: ./login-microfrontend
+    ports:
+      - "3001:80"
+    environment:
+      - NODE_ENV=production
+
+  customers:
+    build:
+      context: ./customers-microfrontend
+    ports:
+      - "3002:80"
+    environment:
+      - NODE_ENV=production
